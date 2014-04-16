@@ -1,0 +1,55 @@
+vm-dns-ermintrude
+=================
+1. Configure network
+#vi /etc/sysconfig/network-scripts/ifcfg-eth0
+
+DEVICE="eth0"
+BOOTPROTO="dhcp"
+IPADDR="192.168.1.7"
+HWADDR="44:37:E6:88:AA:A1"
+NM_CONTROLLED="yes"
+ONBOOT="yes"
+#NETMASK="255.255.255.0"
+TYPE="Ethernet"
+UUID="b179d25a-8310-4c0c-8259-2e998bd44ea5"
+
+#vi /etc/sysconfig/network
+
+NETWORKING=yes
+HOSTNAME=vm-host-mrrusty
+GATEWAY="192.168.1.254"
+
+#vi /etc/hosts
+127.0.0.1   vm-dns-ermintrude
+
+#service network restart
+
+2. Update OS
+
+#yum update
+
+3. Installed VMWare workstation
+
+#chmod a+x /home/itsdougald/Downloads/VMware-Workstation-Full-10.0.1-1379776.x86_64.bundle
+
+4. Setup Apache
+
+#yum install httpd mod_ssl
+#vi /etc/httpd/conf/httpd.conf
+
+ServerName vm-web-zebedee:80
+
+#service httpd start
+
+#chkconfig httpd on
+
+5. Setup PHP
+
+#yum install php-mysql php-devel php-gd php-pecl-memcache php-pspell php-snmp php-xmlrpc php-xml
+
+6. Setup Varnish
+
+#rpm --nosignature -i http://repo.varnish-cache.org/redhat/varnish-3.0/el6/noarch/varnish-release/varnish-release-3.0-1.el6.noarch.rpm
+#yum install varnish
+
+

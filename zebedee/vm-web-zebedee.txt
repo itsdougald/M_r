@@ -1,0 +1,112 @@
+vm-web-zebedee
+===============
+1. Configure network
+Go through System > Preferences > Network Connections > System eth0
+
+#vi /etc/sysconfig/network-scripts/ifcfg-eth0
+
+DEVICE=eth0
+IPADDR="192.168.1.4"
+BOOTPROTO=none
+TYPE="Ethernet"
+#UUID="21050187-45f2-410f-87f5-1c54e621af94"
+ONBOOT="yes"
+NM_CONTROLLED="yes"
+IPADDR="192.168.1.4"
+NETMASK=255.255.255.0
+HWADDR=00:0C:29:25:32:7B
+PREFIX=24
+GATEWAY=192.168.1.254
+DNS1=192.168.1.254
+DEFROUTE=yes
+IPV4_FAILURE_FATAL=yes
+IPV6INIT=no
+NAME="System eth0"
+UUID=5fb06bd0-0bb0-7ffb-45f1-d6edd65f3e03
+LAST_CONNECT=1396084050
+
+
+#vi /etc/sysconfig/network
+
+ETWORKING=yes
+HOSTNAME=vm-web-zebedee
+GATEWAY=192.168.1.254
+
+
+#vi /etc/hosts
+127.0.0.1   vm-web-zebedee
+#service network restart
+
+2. Update OS
+
+#yum update
+
+3. Disable firewall
+
+
+4. Disable iptables
+
+# /etc/init.d/iptables stop
+# chkconfig iptables off
+
+3. Setup Apache
+
+#yum install httpd mod_ssl
+#vi /etc/httpd/conf/httpd.conf
+
+ServerName vm-web-zebedee:80
+
+#service httpd start
+
+#chkconfig httpd on
+
+5. Setup PHP
+
+#yum install php-mysql php-devel php-gd php-pecl-memcache php-pspell php-snmp php-xmlrpc php-xml
+
+6. Setup git & clone catanddogproductions
+
+#yum install git
+#cd /var/www/
+#git clone https://github.com/itsdouglad/catanddogproductions.git
+
+Generate SSH key: 
+https://help.github.com/articles/generating-ssh-keys
+
+(any changes made to files
+#git commit -m "comment"
+#git push
+
+7. Edit /etc/hosts
+
+#vi /etc/hosts
+
+192.168.1.4 www.catanddogproductions.com
+
+8. Setup cifs and mount NAS share
+
+#yum install cifs-utils
+# mount -t cifs //192.168.1.2/share /mnt/terastation --verbose -o user=admin,password=myladyv36
+
+(mount on reboot)
+#vi /etc/fstab
+
+mount -t cifs //192.168.1.2/share /mnt/terastation --verbose -o user=admin,password=myladyv36
+
+9. Rsync album
+
+#vi /etc/cron.daily/rsync-photos.sh
+
+#!/bin/bash
+
+#rsync all pictures from Terastation to Zebedee
+rsync -pogavz "/mnt/terastation/album" "/var/www/catanddogproductions/" > tera.to.zebedee.txt
+
+#chmod a+x /etc/cron.daily/rsync-photo.sh
+
+10. Setup Varnish
+
+#rpm --nosignature -i http://repo.varnish-cache.org/redhat/varnish-3.0/el6/noarch/varnish-release/varnish-release-3.0-1.el6.noarch.rpm
+#yum install varnish
+
+

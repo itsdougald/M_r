@@ -1,0 +1,11 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+[remote "origin"]
+	url = ssh://git@github.com/itsdougald/M_r.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[remote "M_r"]
+	url = ssh://git@github.com/itsdougald/M_r.git
+	fetch = +refs/heads/*:refs/remotes/M_r/*
