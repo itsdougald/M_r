@@ -18,8 +18,8 @@ e.g
         fetch = +refs/heads/*:refs/remotes/origin/*
         url = ssh://git@github.com/itsdouglad/M_r.git
 
-#git commit -m ""
-git push <repo_name> master
-
 setup ssh keys
 #https://help.github.com/articles/generating-ssh-keys
+
+#git commit -m ""
+git push <repo_name> master
