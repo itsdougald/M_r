@@ -29,3 +29,5 @@ SELINUX=disabled
 mount -t cifs //192.168.1.2/share /mnt/terastation --verbose -o user=admin,password=myladyv36
 
 8. Setup git and clone M_r
+
+

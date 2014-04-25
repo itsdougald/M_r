@@ -54,10 +54,6 @@ Generate SSH key:
 https://help.github.com/articles/generating-ssh-keys
 
 (any changes made to files
-Add .gitignore
-/album
-
-#git add *
 #git commit -m "comment"
 #git push
 

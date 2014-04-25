@@ -1,0 +1,8 @@
+#yum install bind bind-utils -y
+#vi /etc/named.conf
+#vi /var/named/fwd.catanddogproductions.com.zone
+#vi /var/named/121.233.220.rev
+#service named start
+#nslookup www.catanddogproductions.com
+#less /var/named/data/named.run
+
