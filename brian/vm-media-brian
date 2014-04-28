@@ -1,0 +1,19 @@
+1. install desktop
+#sudo apt-get install ubuntu-desktop
+
+2. Edit host/hostname
+#nano vi /etc/hostname
+#nano vi /etc/hosts
+
+3. Install utorrent
+#wget http://download.utorrent.com/linux/utorrent-server-3.0-25053.tar.gz
+#sudo tar xvzf utorrent-server-3.0-25053.tar.gz -C /opt/
+#sudo chmod -R 777 /opt/utorrent-server-v3_0/
+#utserver -settingspath /opt/utorrent-server-v3_0/
+
+http://localhost:8080/gui/
+u:admin
+
+4. Mount terastation
+
+#mount -t cifs //192.168.1.2/share /mnt/terastation --verbose -o user=admin,password=myladyv36

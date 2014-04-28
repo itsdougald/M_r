@@ -33,17 +33,6 @@ SELINUX=disabled
 
 6. Setup Varnish
 
-#rpm --nosignature -i http://repo.varnish-cache.org/redhat/varnish-3.0/el6/noarch/varnish-release/varnish-release-3.0-1.el6.noarch.rpm
-#yum install varnish
-#vi /etc/sysconfig/varnish
-#vi /etcvarnish/default.vcl
-#vi /etc/httpd/conf/htpd.conf
-#chkconfig varnish on
-#service varnish start
-#service httpd restart
-#netstat -al | grep varnish
-#netstat -al | grep httpd
-
 7. Setup git & clone catanddogproductions
 
 #yum install git
