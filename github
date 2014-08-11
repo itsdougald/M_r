@@ -24,4 +24,4 @@ setup ssh keys
 #git add *
 #git commit -m ""
 #git push <repo_name> master
-#git fetch <repo_name>
+#git pull <repo_name> master
