@@ -18,5 +18,14 @@ vm-elk-ermintrude.catanddogproductions.com
 #systemctl stop firewalld
 
 
-4. disbake SELinux
+4. disable SELinux
 
+#vi /etc/selinux/config
+
+
+5. configure resolve
+
+#vi /etc/resolve.conf
+
+nameserver 192.168.1.254
+nameserver 8.8.8.8
